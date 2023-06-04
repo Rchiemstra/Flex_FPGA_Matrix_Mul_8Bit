@@ -1,6 +1,15 @@
 # Flex_FPGA_Matrix_Mul_8Bit
 Dynamic_8Bit_Matrix_Multiplier_FPGA is a hardware-implemented matrix multiplier designed for rapid matrix calculations. Primarily used in machine learning applications like neural networks in self-driving cars, it improves performance and reduces CPU load by offloading computations to FPGA.
 
+
+### Team
+
+| Naam                 | LinkedIn                                                                |
+| -------------------- | ----------------------------------------------------------------------- |
+| Ruben Hiemstra       | [LinkedIn](https://www.linkedin.com/in/ruben-hiemstra-84b9b6127/)       |
+|                      | [LinkedIn]()                                 |
+
+
 ## Introduction
 
 Machine learning is being used for many different applications these days. One such application is the self-driving car. One of the techniques used in self-driving cars is a neural network. With a neural network, the car can recognize traffic situations from camera images, for instance. This neural network involves many multiplications of nodes with a factor. These calculations can also be considered as matrix calculations. 
