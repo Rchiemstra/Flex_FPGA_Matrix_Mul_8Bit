@@ -44,8 +44,7 @@ The interface chosen involves writing the matrices to the registers in memory. A
 ### Memory Layout
 When implementing the matrix multiplier, it was discovered that memory is organized in little endian. In the design of the multiplier, we put the most significant bits at the front (left) in the bit string. To ensure that the bytes are loaded correctly, a component was created that swaps the signals per 8 bits in a 32-bit number. This component is used for both the input and output of the multiplier. This has no further impact on performance and does not produce extra hardware, but only ensures that the signals from the register to the matrix are reversed.
 
-<img src="doc/img/Afbeelding5.png"/></img>
-
+<img src="doc/img/Afbeelding100.png" width="50%" height="50%" /></img>
 
 ### DSP Blocks
 During synthesis, Quartus uses DSP blocks for multiplication of numbers. The number of DSP blocks required for a matrix is N3, where N is the size of an N by N matrix. For example, with a 4x4 matrix, the number of DSP blocks required is 4^3 = 64. This is because a vector calculation must be performed for all elements of the resulting matrix (4*4). With a 4x4 matrix, these vectors consist of 4 numbers that are multiplied with 4 other numbers. This means that 4 multipliers are needed for 4*4 elements, or 4^3 for a 4x4 matrix.
@@ -53,7 +52,7 @@ During synthesis, Quartus uses DSP blocks for multiplication of numbers. The num
 ### Generics and Generate
 Generics and generate statements in VHDL were used to set up the matrix multipliers. The entire design of the matrix multiplier is thus fully automatically generated based on the input values. The generics of the top-level can be adjusted in the Platform Designer. This makes it easy to change the size of the matrix multiplier without having to change the code.
 
-<img src="doc/img/Afbeelding100.png" /></img>
+<img src="doc/img/Afbeelding1.png"/></img>
 
 ### RTOS Softcore Implementation
 The memory address of the matrix multiplier is set at 0x331000. Upon implementation, it appeared that address 0x21000, which stood directly behind the Nios in memory, did not work. Eclipse is then unable to download the C code to the Nios. After running the matrix multiplier on address 0x331000, which is far removed from the other components, the system worked. After the multiplier was moved to address 0x331000, the previous address 0x21000 was not empty. It seems that another component depends on this address, although the Platform Designer has released this address.
