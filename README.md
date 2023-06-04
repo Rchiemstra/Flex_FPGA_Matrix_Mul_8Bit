@@ -29,10 +29,11 @@ The step above must be done for each element of the resulting matrix. Each inter
 
 In the proposal, there is a component that performs the vector calculation. The proposed component diagram turned out to be incomplete because there is only one adder applied with three arguments in the diagram. In the 2nd version, it can be seen that an adder tree is used.
 
-|submatrix vermenigvuldiger 1e versie       |submatrix vermenigvuldiger 2de versie      |   	                                        |
-|-----------	                            |---	                                    |---	                                        |
-| <img src="doc/img/Afbeelding2.png"/></img>|<img src="doc/img/Afbeelding3.png"/></img> | <img src="doc/img/Afbeelding4.png"/></img>   	|   	
+|submatrix vermenigvuldiger 1e versie       |submatrix vermenigvuldiger 2de versie      |
+|-----------	                            |---	                                    |
+| <img src="doc/img/Afbeelding2.png"/></img>|<img src="doc/img/Afbeelding3.png"/></img> |  	
 
+<img src="doc/img/Afbeelding4.png"/></img>   
 
 ### Overflow and Underflow Detection
 In case of an overflow or underflow in the vector calculation, the maximum or minimum 8-bit (signed) value is returned. To detect overflow/underflow during summations, the sign bit is observed. If the sign bit flips during the addition of two negative numbers, we know an underflow has occurred. If the sign bit flips with two positive numbers, this signifies an overflow. To determine whether an overflow or underflow has occurred in the multiplication, the result of the multiplications uses twice the number (16) of bits as the input signals. This result is then also added as 16-bit but is reduced back to 8 bits at the end.
