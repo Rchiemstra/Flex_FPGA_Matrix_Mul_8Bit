@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="127" />
+   <irq preferredWidth="47" />
+  </columns>
+ </systemtable>
+ <library
+   expandedCategories="Library,Library/Basic Functions/On Chip Memory,Library/Basic Functions,Project" />
+ <window width="1874" height="1096" x="-1866" y="-8" />
+ <generation greybox="0" synthesis="VHDL" block_symbol_file="0" />
+ <hdlexample language="VHDL" />
+</preferences>
