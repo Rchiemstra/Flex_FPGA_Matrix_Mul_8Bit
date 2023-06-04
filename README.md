@@ -1,20 +1,18 @@
 # Flex_FPGA_Matrix_Mul_8Bit
 Dynamic_8Bit_Matrix_Multiplier_FPGA is a hardware-implemented matrix multiplier designed for rapid matrix calculations. Primarily used in machine learning applications like neural networks in self-driving cars, it improves performance and reduces CPU load by offloading computations to FPGA.
 
+## Introduction
+
+Machine learning is being used for many different applications these days. One such application is the self-driving car. One of the techniques used in self-driving cars is a neural network. With a neural network, the car can recognize traffic situations from camera images, for instance. This neural network involves many multiplications of nodes with a factor. These calculations can also be considered as matrix calculations. 
+
+To ensure that self-driving cars can respond in time, it's important that the system is powerful enough to perform the calculations quickly. That's why a matrix multiplier has been implemented in hardware for this project. In this way, the matrix calculations can be performed by the hardware. This is not only faster than, for example, a CPU or GPU, but it also reduces the load on the CPU.
 
 ### Team
 
 | Naam                 | LinkedIn                                                                |
 | -------------------- | ----------------------------------------------------------------------- |
 | Ruben Hiemstra       | [LinkedIn](https://www.linkedin.com/in/ruben-hiemstra-84b9b6127/)       |
-|                      | [LinkedIn]()                                 |
-
-
-## Introduction
-
-Machine learning is being used for many different applications these days. One such application is the self-driving car. One of the techniques used in self-driving cars is a neural network. With a neural network, the car can recognize traffic situations from camera images, for instance. This neural network involves many multiplications of nodes with a factor. These calculations can also be considered as matrix calculations. 
-
-To ensure that self-driving cars can respond in time, it's important that the system is powerful enough to perform the calculations quickly. That's why a matrix multiplier has been implemented in hardware for this project. In this way, the matrix calculations can be performed by the hardware. This is not only faster than, for example, a CPU or GPU, but it also reduces the load on the CPU.
+|                      | [LinkedIn]()                                                            |
 
 ## Elaboration
 
