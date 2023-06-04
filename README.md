@@ -12,7 +12,7 @@ To ensure that self-driving cars can respond in time, it's important that the sy
 | Naam                 | LinkedIn                                                                |
 | -------------------- | ----------------------------------------------------------------------- |
 | Ruben Hiemstra       | [LinkedIn](https://www.linkedin.com/in/ruben-hiemstra-84b9b6127/)       |
-|                      | [LinkedIn]()                                                            |
+| Stefan Beenen        | [LinkedIn](https://www.linkedin.com/in/stefanbeenen/?originalSubdomain=nl)                                                            |
 
 ## Elaboration
 
