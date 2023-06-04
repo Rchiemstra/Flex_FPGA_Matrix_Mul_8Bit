@@ -126,15 +126,9 @@ Below are the various calculations of the matrix multiplier, both from C and VHD
 ##### **Check**
 <img src="doc/img/Afbeelding11.png"/></img>
 
-##### **Output**
-
-###### The results of the VHDL implementation
-
-<img src="doc/img/Afbeelding10.png"/></img>
-
-###### The results of the C implementation  
-
-<img src="doc/img/Afbeelding12.png"/></img>
+|The results of the VHDL implementation             |The results of the C implementation                    |
+|-----------	                                    |---	                                                |
+|<img src="doc/img/Afbeelding10.png"/></img>        |<img src="doc/img/Afbeelding12.png"/></img>            |  	
 
 
 ## Conclusion & Discussion
