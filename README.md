@@ -10,14 +10,22 @@ To ensure that self-driving cars can respond in time, it's important that the sy
 ## Elaboration
 
 ### General Solution
+<img src="doc/img/Afbeelding1.png" style="float:right"/></img>
 
 To convert a matrix multiplier into VHDL, we first look at how the calculations are performed. The following will describe how this is done: 
+
 A ∙ B = C
+
 Here, the 1st row of matrix A and the 1st column of matrix B are multiplied and summed.
 a_1.1 ∙ b_1.1 + a_1.2 ∙ b_2.1 + a_1.3 ∙ b_3.1 = c_1.1
 The step above must be done for each element of the resulting matrix. Each intersection represents a point in the resulting matrix. This can also be seen as a vector calculation.
 
-In the proposal, there is a component that performs the vector calculation (see figure 2). The proposed component diagram turned out to be incomplete because there is only one adder applied with three arguments in the diagram. In the 2nd version shown in Figure 3, it can be seen that an adder tree is used.
+In the proposal, there is a component that performs the vector calculation. The proposed component diagram turned out to be incomplete because there is only one adder applied with three arguments in the diagram. In the 2nd version, it can be seen that an adder tree is used.
+
+|submatrix vermenigvuldiger 1e versie       |submatrix vermenigvuldiger 2de versie      |   	                                        |
+|-----------	                            |---	                                    |---	                                        |
+| <img src="doc/img/Afbeelding2.png"/></img>|<img src="doc/img/Afbeelding3.png"/></img> | <img src="doc/img/Afbeelding4.png"/></img>   	|   	
+
 
 ### Overflow and Underflow Detection
 In case of an overflow or underflow in the vector calculation, the maximum or minimum 8-bit (signed) value is returned. To detect overflow/underflow during summations, the sign bit is observed. If the sign bit flips during the addition of two negative numbers, we know an underflow has occurred. If the sign bit flips with two positive numbers, this signifies an overflow. To determine whether an overflow or underflow has occurred in the multiplication, the result of the multiplications uses twice the number (16) of bits as the input signals. This result is then also added as 16-bit but is reduced back to 8 bits at the end.
@@ -26,13 +34,18 @@ In case of an overflow or underflow in the vector calculation, the maximum or mi
 The interface chosen involves writing the matrices to the registers in memory. As a result, these matrices can be written directly as a C array to the registers and read from the registers. This makes it easy to control the matrix multiplier from C code. An Avalon interface has been implemented for the registers, enabling communication with the Avalon bus. For the registers, the Reg32 VHDL code from Intel has been used.
 
 ### Memory Layout
-When implementing the matrix multiplier, it was discovered that memory is organized in little endian. In the design of the multiplier, we put the most significant bits at the front (left) in the bit string. To ensure that the bytes are loaded correctly, a component (see figure 4) was created that swaps the signals per 8 bits in a 32-bit number. This component is used for both the input and output of the multiplier. This has no further impact on performance and does not produce extra hardware, but only ensures that the signals from the register to the matrix are reversed.
+When implementing the matrix multiplier, it was discovered that memory is organized in little endian. In the design of the multiplier, we put the most significant bits at the front (left) in the bit string. To ensure that the bytes are loaded correctly, a component was created that swaps the signals per 8 bits in a 32-bit number. This component is used for both the input and output of the multiplier. This has no further impact on performance and does not produce extra hardware, but only ensures that the signals from the register to the matrix are reversed.
+
+<img src="doc/img/Afbeelding5.png"/></img>
+
 
 ### DSP Blocks
 During synthesis, Quartus uses DSP blocks for multiplication of numbers. The number of DSP blocks required for a matrix is N3, where N is the size of an N by N matrix. For example, with a 4x4 matrix, the number of DSP blocks required is 4^3 = 64. This is because a vector calculation must be performed for all elements of the resulting matrix (4*4). With a 4x4 matrix, these vectors consist of 4 numbers that are multiplied with 4 other numbers. This means that 4 multipliers are needed for 4*4 elements, or 4^3 for a 4x4 matrix.
 
 ### Generics and Generate
-Generics and generate statements in VHDL were used to set up the matrix multipliers. The entire design of the matrix multiplier is thus fully automatically generated based on the input values. The generics of the top-level can be adjusted in the Platform Designer (figure 5). This makes it easy to change the size of the matrix multiplier without having to change the code.
+Generics and generate statements in VHDL were used to set up the matrix multipliers. The entire design of the matrix multiplier is thus fully automatically generated based on the input values. The generics of the top-level can be adjusted in the Platform Designer. This makes it easy to change the size of the matrix multiplier without having to change the code.
+
+<img src="doc/img/Afbeelding17.png"/></img>
 
 ### RTOS Softcore Implementation
 The memory address of the matrix multiplier is set at 0x331000. Upon implementation, it appeared that address 0x21000, which stood directly behind the Nios in memory, did not work. Eclipse is then unable to download the C code to the Nios. After running the matrix multiplier on address 0x331000, which is far removed from the other components, the system worked. After the multiplier was moved to address 0x331000, the previous address 0x21000 was not empty. It seems that another component depends on this address, although the Platform Designer has released this address.
@@ -128,7 +141,7 @@ To save hardware space without sacrificing too much speed, the design of the mul
 ## Quartus
 
 ### RTOS
-<img src="doc/img/Afbeelding13.png"/></img>
+<img src="doc/img/Afbeelding16.png"/></img>
 
 ### HPS
-<img src="doc/img/Afbeelding14.png"/></img>
+<img src="doc/img/Afbeelding15.png"/></img>
