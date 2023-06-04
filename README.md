@@ -53,7 +53,7 @@ During synthesis, Quartus uses DSP blocks for multiplication of numbers. The num
 ### Generics and Generate
 Generics and generate statements in VHDL were used to set up the matrix multipliers. The entire design of the matrix multiplier is thus fully automatically generated based on the input values. The generics of the top-level can be adjusted in the Platform Designer. This makes it easy to change the size of the matrix multiplier without having to change the code.
 
-<img src="doc/img/Afbeelding17.png"/></img>
+<img src="doc/img/Afbeelding100.png" /></img>
 
 ### RTOS Softcore Implementation
 The memory address of the matrix multiplier is set at 0x331000. Upon implementation, it appeared that address 0x21000, which stood directly behind the Nios in memory, did not work. Eclipse is then unable to download the C code to the Nios. After running the matrix multiplier on address 0x331000, which is far removed from the other components, the system worked. After the multiplier was moved to address 0x331000, the previous address 0x21000 was not empty. It seems that another component depends on this address, although the Platform Designer has released this address.
